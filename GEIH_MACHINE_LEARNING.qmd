@@ -1,0 +1,157 @@
+---
+title: "Distribución, clasificación y pronóstico del ingreso laboral en Colombia: GEIH 2007–2025 y proyección 2026"
+author:
+  - Luis Florez Tapia
+  - Carlos Arias Nobmann
+  - Daniel Seluan
+  - Duban Quintana Alcalá
+lang: es
+format:
+  html:
+    toc: true
+    embed-resources: true
+  pdf:
+    toc: true
+    toc-depth: 3
+    toc-title: "Contenido"
+    output-file: GEIH_MACHINE_LEARNING.pdf
+    documentclass: article
+    pdf-engine: xelatex
+    papersize: letter
+    geometry:
+      - top=2cm
+      - bottom=2cm
+      - left=2.3cm
+      - right=2.3cm
+      - headheight=15pt
+      - headsep=0.5cm
+    mainfont: texgyrepagella
+    mainfontoptions:
+      - Extension=.otf
+      - UprightFont=*-regular
+      - BoldFont=*-bold
+      - ItalicFont=*-italic
+      - BoldItalicFont=*-bolditalic
+    sansfont: texgyreheros
+    sansfontoptions:
+      - Extension=.otf
+      - UprightFont=*-regular
+      - BoldFont=*-bold
+      - ItalicFont=*-italic
+      - BoldItalicFont=*-bolditalic
+    fontsize: 10pt
+    linestretch: 1.0
+    number-sections: true
+    colorlinks: true
+    linkcolor: UTBAzul
+    urlcolor: UTBAzul
+    citecolor: UTBAzul
+    fig-pos: "H"
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    keep-tex: true
+    include-in-header:
+      text: |
+        \usepackage{etoolbox}
+        \usepackage{fancyhdr}
+        \usepackage{titlesec}
+        \usepackage{needspace}
+        \definecolor{UTBAzul}{HTML}{1037B5}
+        \BeforeBeginEnvironment{longtable}{\Needspace{6\baselineskip}}
+        \AtBeginEnvironment{longtable}{\footnotesize\renewcommand{\arraystretch}{1.12}}
+        \AtBeginDocument{\renewcommand{\maketitle}{}}
+        \pagestyle{fancy}
+        \fancyhf{}
+        \fancyhead[L]{\sffamily\scriptsize Ingreso laboral: clasificación y pronóstico}
+        \fancyhead[R]{\sffamily\scriptsize GEIH | Proyecto integrado}
+        \fancyfoot[C]{\sffamily\small\thepage}
+        \renewcommand{\headrulewidth}{0.3pt}
+        \titleformat{\section}{\large\bfseries\sffamily\color{UTBAzul}}{\thesection}{0.6em}{}
+        \titleformat{\subsection}{\normalsize\bfseries\sffamily}{\thesubsection}{0.6em}{}
+        \titleformat{\paragraph}[block]{\normalsize\bfseries\sffamily}{\theparagraph}{0.6em}{}
+        \titlespacing*{\paragraph}{0pt}{8pt}{4pt}
+        \titlespacing*{\section}{0pt}{13pt}{6pt}
+        \titlespacing*{\subsection}{0pt}{10pt}{4pt}
+        \setlength{\emergencystretch}{3em}
+        \widowpenalty=10000
+        \clubpenalty=10000
+        \raggedbottom
+        \pretocmd{\section}{\Needspace{5\baselineskip}}{}{}
+        \pretocmd{\subsection}{\Needspace{9\baselineskip}}{}{}
+        \pretocmd{\subsubsection}{\Needspace{10\baselineskip}}{}{}
+        \pretocmd{\paragraph}{\Needspace{10\baselineskip}}{}{}
+    include-before-body:
+      text: |
+        \begin{titlepage}
+        \centering
+        \vspace*{0.5cm}
+        \includegraphics[width=9cm]{Logo_utb.png}\par
+        \vspace{1.3cm}
+        {\sffamily\small\color{UTBAzul} MACHINE LEARNING Y SERIES\enspace |\enspace 2026-II\par}
+        \vspace{0.45cm}
+        {\color{UTBAzul}\rule{0.85\textwidth}{0.8pt}\par}
+        \vspace{0.6cm}
+        {\fontsize{22}{28}\selectfont\bfseries Distribución, clasificación y pronóstico del ingreso laboral en Colombia: GEIH 2007–2025 y proyección 2026\par}
+        \vspace{0.6cm}
+        {\sffamily\large Proyecto final · Clasificación y pronóstico\par}
+        \vspace{1.3cm}
+        {\sffamily\small\bfseries PRESENTADO POR\par}
+        \vspace{0.4cm}
+        {\large\renewcommand{\arraystretch}{1.45}
+        \begin{tabular}{@{}c@{}}
+        Luis Florez Tapia\\
+        Carlos Arias Nobmann\\
+        Daniel Seluan\\
+        Duban Quintana Alcalá
+        \end{tabular}\par}
+        \vspace{1cm}
+        {\sffamily\small\bfseries PROFESOR\par}
+        \vspace{0.25cm}
+        {\large Jorge Villalba Acevedo\par}
+        \vfill
+        {\sffamily Universidad Tecnológica de Bolívar\par}
+        \vspace{0.2cm}
+        {Cartagena de Indias, Colombia\par}
+        {2026\par}
+        \end{titlepage}
+        \setcounter{page}{1}
+jupyter: python3
+bibliography: referencias.bib
+csl: ieee.csl
+link-citations: true
+execute:
+  echo: false
+  warning: true
+  message: false
+  cache: false
+---
+
+```{python}
+#| label: calcular-informe-integrado
+#| include: false
+from pathlib import Path
+from IPython.display import Markdown
+from informe_final import build
+ROOT = Path.cwd()
+import os
+if os.environ.get('GEIH_SOLO_INFORME') != '1':
+    from ml_final import AREAS, run_domain
+    for area in AREAS:
+        run_domain(ROOT, area)
+    from auditoria_clusters_final import run as auditar_clusters
+    auditar_clusters(ROOT)
+    from regresion_final import run as ejecutar_regresion
+    from series_temporales import run as ejecutar_series
+    from series_final import run as ejecutar_intervalos
+    ejecutar_regresion(ROOT)
+    ejecutar_series(ROOT)
+    ejecutar_intervalos(ROOT)
+    from parametros_series_final import run as documentar_parametros
+    documentar_parametros(ROOT)
+```
+
+```{python}
+#| label: contenido-informe-integrado
+#| results: asis
+Markdown(build(ROOT))
+```

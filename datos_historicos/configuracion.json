@@ -1,0 +1,32 @@
+{
+  "anios": [
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "filtros": {
+    "edad_minima": 18,
+    "ingreso_minimo": 100000,
+    "horas_maximas": 100,
+    "filtrar_antiguedad": true
+  },
+  "ponderado": false,
+  "unidad": "COP corrientes",
+  "dane_data": "0.5.0"
+}

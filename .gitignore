@@ -1,0 +1,31 @@
+# Entornos y cachés locales
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.quarto/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+# Resultados y artefactos regenerables con ejecutar_proyecto.py
+/resultados_ml_final/
+/resultados_regresion_final/
+/resultados_series/
+/resultados_series_final/
+/informe_final_figuras/
+/*_files/
+/*_actualizado.md
+/*.tex
+/verificacion_final.json
+/predicciones_nuevas.csv
+*.pkl
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+# Se conservan las bases Parquet, los manifiestos, los PDF y modelo_final/ (incluidos sus .joblib).

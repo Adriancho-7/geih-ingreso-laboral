@@ -1,0 +1,14 @@
+{
+  "fecha_revision": "2026-11-18",
+  "fuente": "C:\\Users\\DELL\\Downloads\\resultados_GEIH",
+  "microdatos": "C:\\Users\\DELL\\Downloads\\microdatos_GEIH",
+  "sha256": {
+    "mensual.csv": "2050172758733b3d118260e9771c12e75d6ddacaf418a6768869e3d52fff0aab",
+    "anual.csv": "8b3ba129244920b97501e871ca048cd41b8dce313bb5062983dca861e78f2f0f",
+    "auditoria.csv": "3b73ee88ac1f26bfb6a721f2c9fb60004466b85d3d881570e7c41e7bc2bb94e6",
+    "configuracion.json": "0321d48e22bf477f67fd364ef7e21856a29fc54fc6609e4746b6fbadd2f7baf1",
+    "cobertura.csv": "b8105fd8a841a75465dfea3686894b4f7fd16eed61797f17811f77a23427e637",
+    "descargas_primera_ejecucion.csv": "811f066e725d2f35b1a94746407d2d6c436ea068bd01e9f0739f936b7032d6ea",
+    "resumen_2025_anterior.json": "c6435580437475f46cedb2bd0284ed3c7098a27fafe3a148ab213f93801dfb55"
+  }
+}

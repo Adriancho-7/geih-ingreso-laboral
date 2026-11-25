@@ -1,0 +1,72 @@
+{
+  "nombre": "Clasificador GEIH de tramos de ingreso laboral",
+  "version": "2026-11-25",
+  "dominio": "Nacional con la ciudad como predictor",
+  "familia": "Random Forest",
+  "parametros": {
+    "max_features": 0.5
+  },
+  "predictores": [
+    "edad",
+    "antiguedad",
+    "horas",
+    "sexo",
+    "jefe",
+    "estudia",
+    "estado_civil",
+    "educacion",
+    "ciudad"
+  ],
+  "categorias_ciudad": [
+    "Medellín AM",
+    "Barranquilla AM",
+    "Bogotá",
+    "Bucaramanga AM",
+    "Cali AM",
+    "Resto del país"
+  ],
+  "clases": [
+    "C1: hasta P10",
+    "C2: P10-P50",
+    "C3: P50-P90",
+    "C4: sobre P90"
+  ],
+  "matriz_costos": [
+    [
+      0.0,
+      3.0,
+      6.0,
+      9.0
+    ],
+    [
+      1.0,
+      0.0,
+      1.0,
+      2.0
+    ],
+    [
+      2.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    [
+      3.0,
+      2.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "prioridad_C1": 3.0,
+  "tau_C1": 0.25,
+  "regla": "Clase de mínimo costo esperado: argmin_k sum_j p_j C[j,k]; empates hacia el tramo menor",
+  "semilla": 78018,
+  "prueba": {
+    "costo_por_mil": 880.0183213767873,
+    "f1_macro": 0.38062155960084876,
+    "exactitud": 0.43290379234994997,
+    "auc_macro": 0.7614212082934662
+  },
+  "sklearn": "1.9.1",
+  "generado": "2026-11-25"
+}
